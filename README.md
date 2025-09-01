@@ -1,35 +1,69 @@
-src = https://www.youtube.com/watch?v=_ngCLZ5Iz-0
+# React + TypeScript + Vite
 
-# Why do we need Zustand?
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-When using `useState` to create a state variable, we keep the state local to the component where it's created.  
-We can pass a state from one component to another through the use of `props`, but this gets complicated
-as our component tree gets deeper, which ends up being a common problem known as **Prop Drilling**.  
+Currently, two official plugins are available:
 
-The React native solution to Props Drilling is to use the **Context API** through the `useContext()` hook.  
-This solution requires to nest your App, or a subset of it, in what's called a **context provider**, which 
-doesn't scale really well.  
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-# What is Zustand?
+## Expanding the ESLint configuration
 
-Zustand is a library that allows us to have proper **state management** in a React application.  
-More specifically, it allows **global state management** in our application.  
-It also allows to persist data into the localStorage or sessionStorage via its `persist()` function.  
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-# How does Zustand work?
+```js
+export default tseslint.config([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
 
-Zustan functions with the concept of **stores**.  
-A store is a place where we store your state and any function that updates that state.  
+      // Remove tseslint.configs.recommended and replace with this
+      ...tseslint.configs.recommendedTypeChecked,
+      // Alternatively, use this for stricter rules
+      ...tseslint.configs.strictTypeChecked,
+      // Optionally, add this for stylistic rules
+      ...tseslint.configs.stylisticTypeChecked,
 
-Then, our React components can access the store, which means it can access: 
-- the values in the state,
-- the functions that update the state.
+      // Other configs...
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
+```
 
-## Example
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-- create a store.ts file inside the src folder
-- 
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
 
-
----
-@3/19
+export default tseslint.config([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+      // Enable lint rules for React
+      reactX.configs['recommended-typescript'],
+      // Enable lint rules for React DOM
+      reactDom.configs.recommended,
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
+```
