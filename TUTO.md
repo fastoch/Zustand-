@@ -25,7 +25,7 @@ Then, our React components can access the store, which means it can access:
 - the values in the state,
 - the functions that update the state.
 
-## Example
+## Let's create our first store
 
 - open a new folder in VSCodium
 - create a new React project via `npm create vite@latest`
@@ -57,7 +57,7 @@ export const useCounterStore = create<CounterStore>((set) => ({
 }));
 ```
 
-This way, the state (or store) is defined outside of a component and is accessible to any component.  
+This way, the store (which is a store) is defined outside of a component and is accessible to any component.  
 
 ## Important note
 
@@ -86,5 +86,12 @@ const OtherComponent = ({ count }: { count: number }) => {
 export default App
 ```
 
+## Updating the state
+
+Check the `store.ts` file to see how we can increment and decrement the state.  
+
+To update the count variable (the state), we use the `set` function which is provided by the `create` function.  
+
+
 ---
-@5/19
+@7/19
