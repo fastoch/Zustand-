@@ -17,6 +17,7 @@ const OtherComponent = ({ count }: { count: number }) => {
   const incrementAsync = useCounterStore((state) => state.incrementAsync);
   const decrement = useCounterStore((state) => state.decrement);
 
+  // call logCount everytime the count state changes
   useEffect(() => {
     logCount();
   }, [count]);

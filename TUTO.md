@@ -97,7 +97,7 @@ To update the count variable (the state), we use the `set` function which is pro
 check the `logCount` function in the `App.tsx` component  
 
 We can access the store in any function using `getState()`  
-This is very useful to declare functions outside of a component.
+This is very useful to declare functions outside of a component.  
 
----
-@14/19
+It's also possible to update the state outside of a component, using the `setState()` function.  
+
