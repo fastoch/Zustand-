@@ -100,4 +100,4 @@ We can access the store in any function using `getState()`
 This is very useful to declare functions outside of a component.  
 
 It's also possible to update the state outside of a component, using the `setState()` function.  
-
+check the `resetCount` function in `App.tsx`

@@ -7,6 +7,11 @@ const logCount = () => {
   console.log("count:", count);
 }
 
+const resetCount = (count: number) => {
+  count > 8 && useCounterStore.setState({ count: 0 });
+}
+
+
 const App = () => {
   const count = useCounterStore((state) => state.count);
 
@@ -20,6 +25,7 @@ const OtherComponent = ({ count }: { count: number }) => {
   // call logCount everytime the count state changes
   useEffect(() => {
     logCount();
+    resetCount(count);
   }, [count]);
 
   return (
