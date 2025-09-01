@@ -59,7 +59,32 @@ export const useCounterStore = create<CounterStore>((set) => ({
 
 This way, the state (or store) is defined outside of a component and is accessible to any component.  
 
+## Important note
 
+The `use` keyword is required for every single **hook** in React, including custom hooks.  
+In the example above, `useCounterStore` is a custom hook.  
+It's actually a custom hook that we can use in a React component without having to wrap anything in a provider, 
+and without having to pass any props.  
+
+## Connecting our store to the App component
+
+In `App.tsx`:
+```tsx
+import './App.css'
+import { useCounterStore } from './store'
+
+const App = () => {
+  const count = useCounterStore((state) => state.count);
+
+  return <OtherComponent count={count} />
+}
+
+const OtherComponent = ({ count }: { count: number }) => {
+  return <div>{count}</div>
+}
+
+export default App
+```
 
 ---
-@4/19
+@5/19
