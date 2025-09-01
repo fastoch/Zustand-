@@ -88,10 +88,16 @@ export default App
 
 ## Updating the state
 
-Check the `store.ts` file to see how we can increment and decrement the state.  
+Check the `store.ts` and `App.tsx` files to see how we can increment and decrement the state.  
 
 To update the count variable (the state), we use the `set` function which is provided by the `create` function.  
 
+## Using a store outside of a component
+
+check the `logCount` function in the `App.tsx` component  
+
+We can access the store in any function using `getState()`  
+This is very useful to declare functions outside of a component.
 
 ---
-@9/19
+@14/19
