@@ -8,7 +8,17 @@ const App = () => {
 }
 
 const OtherComponent = ({ count }: { count: number }) => {
-  return <div>{count}</div>
+  const increment = useCounterStore((state) => state.increment);
+  const decrement = useCounterStore((state) => state.decrement);
+  return (
+    <div>
+      Count: {count}
+      <div className="button-container">
+        <button onClick={increment}>Increment</button>
+        <button onClick={decrement}>Decrement</button>
+      </div>
+    </div>
+  )
 }
 
 export default App

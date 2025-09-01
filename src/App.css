@@ -40,3 +40,27 @@
 .read-the-docs {
   color: #888;
 }
+
+.button-container {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 1em;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  background-color: rgb(184, 36, 184);
+  transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+  /* A slightly darker shade for visual feedback */
+  background-color: rgb(164, 32, 164);
+  /* A subtle "lift" effect */
+  transform: translateY(-2px);
+  /* A shadow to enhance the lift */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+}
